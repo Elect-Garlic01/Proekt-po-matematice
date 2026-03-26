@@ -613,9 +613,16 @@ main {
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
   animation: fadeInUp 0.8s ease both;
   animation-delay: calc(var(--animation-order, 0) * 0.1s + 0.5s);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .card:hover {
