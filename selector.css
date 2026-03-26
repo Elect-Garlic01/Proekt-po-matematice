@@ -145,8 +145,8 @@ main {
 
 main {
   flex: 1;
-  width: min(1100px, 90%);
-  margin: 2rem auto;
+  width: min(1400px, 95%);
+  margin: 1rem auto;
 }
 
 .section, .hero, .call-to-action {
@@ -218,8 +218,8 @@ main {
   position: absolute;
   bottom: -8px;
   left: 0;
-  width: 60px;
-  height: 3px;
+  width: 80px;
+  height: 4px;
   background: linear-gradient(90deg, var(--primary), var(--accent));
   border-radius: 2px;
   animation: lineGrow 0.8s ease forwards;
@@ -227,7 +227,7 @@ main {
 
 @keyframes lineGrow {
   from { width: 0; }
-  to { width: 60px; }
+  to { width: 80px; }
 }
 
 .topic-list {
