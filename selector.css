@@ -38,13 +38,20 @@ html, body {
 }
 
 @keyframes pageFadeIn {
-  from {
+  0% {
     opacity: 0;
-    transform: translateY(20px) scale(0.98);
+    transform: translateY(30px) scale(0.95) rotateY(5deg);
+    filter: blur(5px);
   }
-  to {
+  50% {
+    opacity: 0.7;
+    transform: translateY(15px) scale(0.97) rotateY(2.5deg);
+    filter: blur(2px);
+  }
+  100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1) rotateY(0deg);
+    filter: blur(0px);
   }
 }
 
@@ -59,13 +66,17 @@ html, body {
 }
 
 @keyframes slideUp {
-  from {
+  0% {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(50px) scale(0.9) rotateX(10deg);
   }
-  to {
+  50% {
+    opacity: 0.5;
+    transform: translateY(25px) scale(0.95) rotateX(5deg);
+  }
+  100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1) rotateX(0deg);
   }
 }
 
@@ -94,6 +105,8 @@ main {
 .brand h1 {
   margin: 0;
   font-size: 1.8rem;
+  animation: titleBounce 1.5s ease both;
+  animation-delay: 0.5s;
 }
 
 .brand p {
@@ -119,6 +132,8 @@ main {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  animation: navLinkAppear 0.6s ease both;
+  animation-delay: calc(var(--nav-order, 0) * 0.1s);
 }
 
 .main-nav a::before {
@@ -200,9 +215,100 @@ main {
   pointer-events: none;
 }
 
-@keyframes float {
-  0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
-  50% { transform: translate(-50%, -50%) rotate(180deg); }
+@keyframes navLinkAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8) rotate(-5deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-10px) scale(0.9) rotate(-2.5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-180deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05) rotate(0deg);
+  }
+  70% {
+    transform: scale(0.9) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotateY(90deg);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(0.75) rotateY(45deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) skewX(-10deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(-50px) skewX(-5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) skewX(0deg);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(15px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes titleBounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-10deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1) rotate(5deg);
+  }
+  70% {
+    transform: scale(0.95) rotate(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
 }
 
 .section h2, .hero h2, .call-to-action h2 {
@@ -246,6 +352,8 @@ main {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  animation: slideInLeft 0.8s ease both;
+  animation-delay: calc(var(--animation-order, 0) * 0.1s + 0.3s);
 }
 
 .topic-list li::before {
@@ -268,10 +376,17 @@ main {
   box-shadow: 0 4px 16px var(--shadow);
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+.location-image {
+  animation: zoomIn 1.2s ease both;
+  animation-delay: calc(var(--animation-order, 0) * 0.1s + 1s);
+}
+
+.location-image img {
+  transition: transform 0.3s ease;
+}
+
+.location-image:hover img {
+  transform: scale(1.05);
 }
 
 .media-grid {
@@ -476,6 +591,8 @@ main {
   text-align: center;
   padding: 1rem 1.25rem;
   font-size: .9rem;
+  animation: fadeInUp 1s ease both;
+  animation-delay: 2.5s;
 }
 
 .site-footer a {
